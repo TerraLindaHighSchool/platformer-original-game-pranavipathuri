@@ -28,8 +28,17 @@ public class Level1 extends World
         Floor floor = new Floor();
         addObject(new Floor(), 600, 800);
         Player player = new Player();
-        addObject(player,38,752);
+        addObject(new Player(),38,752);
         Door door = new Door();
-        addObject(door,1174,40);
+        addObject(new Door(),1174,40);        
+        Bomb bomb = new Bomb();
+        addObject(new Bomb(),56,56);
+        BrickWall brickWall = new BrickWall();
+        addObject(new BrickWall(),480,34);
+        addObject(new Gem(),43,33);
+        addObject(new SmBrickWall(),120,34);
+        addObject(new TrapDoor(),120,34);
+        player.setLocation(25,759);
+        smBrickWall.setLocation(216,276);
     }
 }
