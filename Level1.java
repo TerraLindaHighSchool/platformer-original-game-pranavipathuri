@@ -34,11 +34,10 @@ public class Level1 extends World
         Bomb bomb = new Bomb();
         addObject(new Bomb(),56,56);
         BrickWall brickWall = new BrickWall();
-        addObject(new BrickWall(),480,34);
+        addObject(new BrickWall(),240,600);
         addObject(new Gem(),43,33);
         addObject(new SmBrickWall(),120,34);
         addObject(new TrapDoor(),120,34);
         player.setLocation(25,759);
-        smBrickWall.setLocation(216,276);
     }
 }
