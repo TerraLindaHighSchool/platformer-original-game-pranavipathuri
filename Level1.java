@@ -8,6 +8,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Level1 extends World
 {
+    private final float GRAVITY = 0.0677f;
+    
     /**
      * Constructor for objects of class BrickWorld.
      * 
@@ -19,25 +21,32 @@ public class Level1 extends World
         prepare();
     }
     
-    /**
-     * Prepare the world for the start of the program.
-     * That is: create the initial objects and add them to the world.
-     */
+
     private void prepare()
     {
-        Floor floor = new Floor();
+        addObject(new Player(), 47,733);
+
         addObject(new Floor(), 600, 800);
-        Player player = new Player();
-        addObject(new Player(),38,752);
-        Door door = new Door();
-        addObject(new Door(),1174,40);        
-        Bomb bomb = new Bomb();
-        addObject(new Bomb(),56,56);
-        BrickWall brickWall = new BrickWall();
-        addObject(new BrickWall(),240,600);
-        addObject(new Gem(),43,33);
-        addObject(new SmBrickWall(),120,34);
-        addObject(new TrapDoor(),120,34);
-        player.setLocation(25,759);
+
+        addObject(new Door(),1174,40); 
+
+        addObject(new Bomb(GRAVITY),367,665);
+
+        addObject(new BrickWall(),876,434);
+        addObject(new BrickWall(),960,101);
+        addObject(new BrickWall(),400,710);
+
+        addObject(new Gem(),738,576);
+
+        addObject(new SmBrickWall(),463,171);
+        addObject(new SmBrickWall(),608,103);
+        
+        addObject(new SmBrickWall(),690,608);
+        addObject(new SmBrickWall(),584,528);
+
+        
+        addObject(new SmBrickWall(),657,347);
+        addObject(new SmBrickWall(),548,245);
+        
     }
 }
