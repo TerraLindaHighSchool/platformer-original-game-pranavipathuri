@@ -23,11 +23,15 @@ public class Bomb extends Obstacle
      */
     public void act()
     {
-        // Add your action code here.
+        fall();
     }
     
     protected void fall()
     {
-        
+        if(!isOnGround())
+        {
+            yVelocity += GRAVITY;
+            setLocation(getX(), getY() + (int) yVelocity);
+        }
     }
 }

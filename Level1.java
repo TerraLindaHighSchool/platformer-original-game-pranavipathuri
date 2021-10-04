@@ -21,6 +21,10 @@ public class Level1 extends World
         prepare();
     }
     
+    public void act()
+    {
+        spawn();
+    }
 
     private void prepare()
     {
@@ -48,5 +52,12 @@ public class Level1 extends World
         addObject(new SmBrickWall(),657,347);
         addObject(new SmBrickWall(),548,245);
         
+    }
+     private void spawn()
+    {
+        if(Math.random() < 0.0025)
+        {
+            addObject(new Rock(GRAVITY), Greenfoot.getRandomNumber(1200), -30);
+        }
     }
 }
