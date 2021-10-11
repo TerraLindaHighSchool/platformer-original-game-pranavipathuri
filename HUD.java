@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class HUD extends Actor
+public abstract class HUD extends Actor
 {
     /**
      * Act - do whatever the HUD wants to do. This method is called whenever

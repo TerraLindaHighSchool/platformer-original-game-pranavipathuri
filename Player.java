@@ -19,8 +19,10 @@ public class Player extends Actor
     private Class NEXT_LEVEL;
     private GreenfootSound MUSIC;
     
-    public Player(int speed, float jumpForce, float gravity, int maxHealth, int maxPowerUp, Class nextLevel, GreenfootSound music)
-    {
+    public Player​(int speed, float jumpForce, float gravity,
+                    int maxHealth, int maxPowerUp, Class nextLevel, 
+                    GreenfootSound music)
+        {
         this.speed = speed;
         JUMP_FORCE = jumpForce;
         GRAVITY = gravity;
@@ -42,8 +44,11 @@ public class Player extends Actor
     
     public void act()
     {   
-        animator();
-        move(speed);
+        walk();
+        jump();
+        fall();
+        onCollision();
+        gameOver();
     }
     
     public void addedToWorld(World world) {}
@@ -65,7 +70,10 @@ public class Player extends Actor
         frame++;
     }
     
-    private void walk() {}
+    private void walk() 
+    {
+        
+    }
     private void jump() {}
     private void fall() {}
     private void onCollision() {}
