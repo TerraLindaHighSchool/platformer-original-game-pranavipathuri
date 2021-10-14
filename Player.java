@@ -29,6 +29,9 @@ public class Player extends Actor
         NEXT_LEVEL = nextLevel;
         MUSIC = music;
         
+        healthCount = maxHealth;
+        health = new Health[maxHealth];
+        
         STANDING_IMAGE = getImage();
         WALK_ANIMATION = new GreenfootImage[]
                     {
@@ -51,7 +54,20 @@ public class Player extends Actor
         gameOver();
     }
     
-    public void addedToWorld(World world) {}
+    public void addedToWorld(World world)
+    {
+        /*health[0] = new Health();
+        world.addObject(health[0], 30, 36);
+        health[1] = new Health();
+        world.addObject(health[1], 72, 36);
+        health[2] = new Health();
+        world.addObject(health[2], 114, 36);*/
+         for(int i = 0; i < health.length; i++)
+        {
+             health[i] = new Health();
+             world.addObject(health[i], 30 + 42 * i, 36);
+        }
+    }
     
     private void animator()
     {
@@ -84,6 +100,11 @@ public class Player extends Actor
        
        if(Greenfoot.isKeyDown("right"))
        {
+           if(!MUSIC.isPlaying())
+            {
+               MUSIC.playLoop();
+            }
+           
            if(isFacingLeft)
            {
                mirrorImages();
@@ -113,6 +134,7 @@ public class Player extends Actor
     
     private void jump() 
     {
+        Greenfoot.playSound("jump.wav");
         if(Greenfoot.isKeyDown("space") && isOnGround())
         {
             yVelocity = JUMP_FORCE;
@@ -143,8 +165,10 @@ public class Player extends Actor
         if(isTouching(Door.class))
         {
            World world = null;
+           Greenfoot.playSound("door_open.wav");
            try
            {
+               MUSIC.stop();
                world = (World) NEXT_LEVEL.newInstance();
            }
            catch (InstantiationException e)
@@ -153,12 +177,16 @@ public class Player extends Actor
            } catch (IllegalAccessException e) {
                System.out.println("Cannot access class constructor");
             }
-            Greenfoot.setWorld(world);           
+           Greenfoot.setWorld(world);
+           
         }
         
         if (isTouching(Obstacle.class))
         {
+            Greenfoot.playSound("explosionSmall.wav");
             removeTouching(Obstacle.class);
+            getWorld().removeObject(health[healthCount - 1]);
+            healthCount--;
         }
         
         //hit pkatform but not on ground
@@ -176,7 +204,16 @@ public class Player extends Actor
             WALK_ANIMATION[i].mirrorHorizontally();
         }
     }
-    private void gameOver() {}
+    
+    private void gameOver() 
+    {
+        if(healthCount == 0)
+        {
+            MUSIC.stop();
+            Greenfoot.setWorld(new Level1());
+        }
+    }
+    
     private boolean isOnGround()
     {
         Actor ground = getOneObjectAtOffset(0, getImage().getHeight() / 2, Platform.class);
