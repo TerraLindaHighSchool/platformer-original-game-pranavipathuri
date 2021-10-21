@@ -126,7 +126,7 @@ public class Player extends Actor
            move(-speed);
        }
        
-       if((!Greenfoot.isKeyDown("left")||Greenfoot.isKeyDown("right")))
+       if(!(Greenfoot.isKeyDown("left")||Greenfoot.isKeyDown("right")))
        {
            isWalking = false;
        }
