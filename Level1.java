@@ -58,6 +58,9 @@ public class Level1 extends World
 
         addObject(new SmBrickWall(),657,347);
         addObject(new SmBrickWall(),548,245);
+        Bomb bomb3 = new Bomb(GRAVITY);
+        addObject(bomb3,1024,392);
+        bomb3.setLocation(611,62);
     }
 
      private void spawn()

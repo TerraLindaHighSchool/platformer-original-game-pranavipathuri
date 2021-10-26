@@ -195,6 +195,13 @@ public class Player extends Actor
             yVelocity = -1;
             fall();
         }
+        
+        if(isTouching(Collectable.class) && healthCount < 6)
+        {
+            healthCount++;
+            getWorld().addObject(health[2], 114, 36);
+            removeTouching(Collectable.class);
+        }
     }
     
     private void mirrorImages() 
