@@ -217,7 +217,7 @@ public class Player extends Actor
         if(healthCount == 0)
         {
             MUSIC.stop();
-            Greenfoot.setWorld(new Level1());
+            Greenfoot.setWorld(new LosingScreen());
         }
     }
     
